@@ -2,6 +2,33 @@
 
 A daily newsletter generator that fetches the latest FMCG & retail deal news, filters for relevance, scores source credibility, and generates a structured business brief using AI.
 
+## 🧠 Approach & Decision
+
+I explored two approaches before finalizing the architecture:
+
+### ❌ Approach 1: Scraping + NLP Pipeline (Rejected)
+
+**Plan:** Build custom web scrapers for each news source, extract article text, run NLP pipelines for deduplication, relevance filtering, and credibility scoring.
+
+**Problems faced:**
+- **Legal & Reliability Issues** — Web scraping exists in a legal grey area. News sites frequently change their HTML structure, block IPs, or add CAPTCHAs. Any one source going down would break the pipeline.
+- **NLP Limitations** — While basic text cleaning and keyword matching is possible with NLP, accurately determining *deal relevance* (is this article about an M&A deal or just a general news piece?) and *source credibility* (is Reuters more credible than an unknown blog?) requires deep semantic understanding. Traditional NLP models struggle with this nuance.
+- **Maintenance Burden** — Each source needs individual parser logic. Scaling to 10+ sources means 10+ scrapers to maintain.
+- **No Free Quality** — Good NLP models for relevance/credibility either require expensive API calls or heavy fine-tuning.
+
+### ✅ Approach 2: LLM-Powered Pipeline (Selected — Optimal)
+
+**Plan:** Use **Tavily API** for legal, reliable news search across trusted domains, then pass results through **Ollama (local LLM)** for all intelligence tasks.
+
+**Why this works:**
+- **Legal & Free** — Tavily is a licensed search API with a free tier. No scraping, no blocks, no legal risk. Ollama runs locally — **zero API cost** for the LLM.
+- **LLM Handles Everything** — The same local model handles deduplication, relevance scoring, credibility assessment, and final newsletter writing. No need for separate NLP models for each task.
+- **Semantic Understanding** — LLMs understand context, not just keywords. It can tell the difference between "Company X acquired Company Y" (deal) vs "Company X launched a new product" (not a deal).
+- **Zero Maintenance** — No parser updates when websites change. Just add/remove domains in a config list.
+- **Production-Ready** — FastAPI backend, Docker support, CI/CD pipeline. Deploy anywhere.
+
+**Trade-off:** LLM inference is slower than a regex-based NLP pipeline (~30-60s vs ~5s). But the output quality is dramatically better, and the development/maintenance cost is near zero.
+
 ## 📸 Screenshots
 
 | Home Page | Generating | Output |
