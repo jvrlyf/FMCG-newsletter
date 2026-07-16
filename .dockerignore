@@ -1,0 +1,11 @@
+.git
+__pycache__
+.env
+.venv
+*.pyc
+.DS_Store
+README.md
+article.html
+styles.css
+public
+.github

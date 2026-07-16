@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: fmcg-newsletter
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://host.docker.internal:11434}
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-minimax-m3:cloud}
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - fmcg-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  fmcg-network:
+    driver: bridge

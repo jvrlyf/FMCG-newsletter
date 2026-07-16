@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daily FMCG & Retail Deals Brief - M&A, Funding, Strategic Moves in Food & Retail">
+    <meta name="keywords" content="FMCG, retail, M&A, funding, deals, newsletter, India, food, consumer goods">
+    <meta name="author" content="FMCG Deals Brief">
+    <meta property="og:title" content="FMCG & Retail Deals Brief">
+    <meta property="og:description" content="Daily M&A, Funding & Strategic Moves in Food & Retail">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
+    <title>FMCG & Retail Deals Brief</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="app-title">FMCG & Retail Deals Brief</h1>
+            <div class="header-controls">
+                <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="hero-section">
+                <p class="hero-subtitle">Daily M&A, Funding & Strategic Moves in Food & Retail</p>
+                <button id="generate-btn" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span>Generate Today's Newsletter</span>
+                </button>
+                <p class="hero-hint">Fetches latest deals, filters for relevance, scores credibility, generates structured brief</p>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p class="loading-text">Fetching articles...</p>
+                <p class="loading-subtext" id="loading-stage"></p>
+            </div>
+
+            <div id="error" class="error hidden"></div>
+
+            <article id="newsletter" class="newsletter hidden">
+                <header class="newsletter-header">
+                    <h2 class="newsletter-title">FMCG & Retail Deals Brief</h2>
+                    <time class="newsletter-date" id="newsletter-date"></time>
+                </header>
+                <div class="newsletter-content" id="newsletter-content"></div>
+                <footer class="newsletter-footer">
+                    <small>Generated via Tavily + Ollama pipeline &bull; <a href="#" id="regenerate-link">Regenerate</a></small>
+                </footer>
+            </article>
+
+            <div id="empty-state" class="empty-state">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <p>Click the button above to generate today's newsletter</p>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>Data sources: Reuters, Bloomberg, FoodNavigator, Just-Food, RetailDive, Economic Times, Business Standard, Mint, FSSAI, PIB</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMCG & Retail Deals Brief</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">FMCG & Retail Deals Brief</h1>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <p class="hero-tagline">Daily M&A, Funding & Strategic Moves in FMCG, Food-Tech & Retail</p>
+                    <button id="generate-btn" class="btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                        <span>Generate Today's Newsletter</span>
+                    </button>
+                    <p class="hero-hint">Pulls from Reuters, Bloomberg, FoodNavigator, Just-Food, RetailDive + India sources</p>
+                </div>
+            </section>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p class="loading-text">Building your newsletter</p>
+                <p id="loading-stage" class="loading-subtext">Starting...</p>
+            </div>
+
+            <div id="error" class="error hidden"></div>
+
+            <div id="newsletter" class="newsletter hidden">
+                <header class="newsletter-header">
+                    <h2 class="newsletter-title">FMCG & Retail Deals Brief</h2>
+                    <time id="newsletter-date" class="newsletter-date" datetime=""></time>
+                </header>
+                <div id="newsletter-content" class="newsletter-content"></div>
+                <footer class="newsletter-footer">
+                    <a id="regenerate-link" href="#">Generate again</a>
+                    <span> · </span>
+                    <span>Powered by Tavily Search + Ollama LLM</span>
+                </footer>
+            </div>
+
+            <div id="empty-state" class="empty-state">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="64" height="64">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <p>Click the button above to generate today's FMCG & Retail deals newsletter</p>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>FMCG & Retail Deals Brief — Built with FastAPI, Tavily, Ollama</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
